@@ -23,7 +23,8 @@
   };
 
   outputs = { self, ... }@inputs:
-    inputs.tide.lib.mkFlake self inputs {
+    inputs.tide.lib.mkFlake inputs {
+      systems = (import ./flake.systems.nix);
       # Outputs included in mkFlake:
       # - colmena deployment from each nixosConfiguration
       # - nixosConfiguration based on the `hosts/` dir
